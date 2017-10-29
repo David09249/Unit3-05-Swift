@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>// Created by: David Wang
+// Created on: Oct-2017
+// Created for: ICS3U
+// Daily Assignment - Unit3-05
+// This program calculates the factorial of a number
+
+import PlaygroundSupport
+
+import UIKit
+
+class ViewController : UIViewController, UITextFieldDelegate {
+    // this is the main view controller, that will show the UIKit elements
+    
+    // properties
+    var factorialLabel : UILabel!
+    var answerLabel : UILabel!
+    var userInputTextField : UITextField!
+    var calculateButton : UIButton!
+    
+    override func viewDidLoad() {
+        // UI
+        super.viewDidLoad()
+        
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.view = view
+        
+        // factorialLabel
+        factorialLabel = UILabel()
+        factorialLabel.text = "Enter a Number to Calculate its Factorial"
+        view.addSubview(factorialLabel)
+        factorialLabel.translatesAutoresizingMaskIntoConstraints = false
+        factorialLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        factorialLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        
+        // userInputTextField
+        userInputTextField = UITextField()
+        
+        userInputTextField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width / 2, height: 50)
+        userInputTextField.backgroundColor = UIColor.lightGray
+        
+        userInputTextField.borderStyle = UITextBorderStyle.roundedRect
+        
+        userInputTextField.font = UIFont.systemFont(ofSize: 17)
+        userInputTextField.textAlignment = .center
+        userInputTextField.placeholder = "                         "
+        userInputTextField.clearButtonMode = UITextFieldViewMode.whileEditing
+        
+        userInputTextField.delegate = self
+        view.addSubview(userInputTextField)
+        userInputTextField.translatesAutoresizingMaskIntoConstraints = false
+        userInputTextField.topAnchor.constraint(equalTo: factorialLabel.bottomAnchor, constant: 20).isActive = true
+        userInputTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        
+        // calculate button
+        calculateButton = UIButton()
+        calculateButton.setTitle("Calculate Factorial", for: .normal)
+        calculateButton.setTitleColor(.blue, for: .normal)
+        calculateButton.addTarget(self, action: #selector(factorialText), for: .touchUpInside)
+        view.addSubview(calculateButton)
+        calculateButton.translatesAutoresizingMaskIntoConstraints = false
+        calculateButton.topAnchor.constraint(equalTo: userInputTextField.bottomAnchor, constant: 20).isActive = true
+        calculateButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        
+        // answerLabel
+        answerLabel = UILabel()
+        
+        view.addSubview(answerLabel)
+        answerLabel.translatesAutoresizingMaskIntoConstraints = false
+        answerLabel.topAnchor.constraint(equalTo: calculateButton.bottomAnchor, constant: 20).isActive = true
+        answerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        
+    }
+    
+    @objc func factorialText() {
+        // input
+        var user = Int(userInputTextField.text!)
+        var integer = 1
+        var number = 1
+        
+        if user! &lt; 1 {
+            answerLabel.text = "Please enter a valid number."
+        }
+        else {
+            // process
+            while integer &lt;= user! {
+                number = integer * number
+                integer = integer + 1
+            }
+            
+            // output
+            self.answerLabel.text = "The factorial is: " + String(number)
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true 
+    }
+}
+
+PlaygroundPage.current.liveView = ViewController()
+</string>
+			<key>ModifiedRange</key>
+			<string>{145, 3929}</string>
+			<key>OriginalContent</key>
+			<string>show("What is your name?")
+
+let name = ask("Name")
+
+show("Hi " + name)
+</string>
+			<key>OriginalRange</key>
+			<string>{145, 71}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Answers.playgroundchapter/Pages/Text.playgroundpage/Contents.swift</string>
+</dict>
+</plist>
